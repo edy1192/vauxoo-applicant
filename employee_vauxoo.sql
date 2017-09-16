@@ -13,7 +13,8 @@ CREATE TABLE employee (
   id integer PRIMARY KEY,
   first_name char(100) NOT NULL,
   last_name char(100) NOT NULL,
-  employee_department_id integer REFERENCES employee_department(id)
+  employee_department_id integer REFERENCES employee_department(id),
+  boss_id integer REFERENCES employee(id)
 );
 
 CREATE TABLE employee_hobby
@@ -40,10 +41,10 @@ INSERT INTO employee_department VALUES
      (6, 'Purchasing', 'Acquiring goods and services for use by the organisation');
 
 INSERT INTO employee  VALUES 
-     (1, 'Edilianny', 'Sanchez', 2),
-     (2, 'Karilin', 'Fuentes', 3),
-     (3, 'Luis', 'Perez', 5),
-     (4, 'Jose', 'Rivas', 2);
+     (1, 'Edilianny', 'Sanchez', 2, 2),
+     (2, 'Karilin', 'Fuentes', 3, 3),
+     (3, 'Luis', 'Perez', 5, 1),
+     (4, 'Jose', 'Rivas', 2, 3);
 
 INSERT INTO employee_hobby
     VALUES 
