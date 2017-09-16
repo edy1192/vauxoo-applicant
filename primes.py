@@ -1,16 +1,25 @@
 """
-Your module documentation here
+Prime number class
 """
+import math
 
 
 class PrimeClass(object):
     """
-    Your class documentation here
+    Prime Numbers Class
     """
-
     def is_prime(self, num_int):
         """
-        Your method documentation here
+        Check if a number is prime number
         """
-        # your primes code here
-        return "not implement yet"  # Remove this dummy line
+        if num_int == 2:
+            return True
+
+        if num_int % 2 == 0 or num_int <= 1:
+            return False
+
+        sqr = int(math.sqrt(num_int)) + 1
+        for num in range(3, sqr, 2):
+            if num_int % num == 0:
+                return False
+        return True
