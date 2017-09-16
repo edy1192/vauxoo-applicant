@@ -16,6 +16,21 @@ CREATE TABLE employee (
   employee_department_id integer REFERENCES employee_department(id)
 );
 
+CREATE TABLE employee_hobby
+(
+  id serial NOT NULL,
+  name varchar(70) NOT NULL,
+  description varchar(200) NOT NULL,
+  CONSTRAINT id_hobby PRIMARY KEY (id)
+);
+
+CREATE TABLE employee_hobbies
+(
+  employee_id  integer REFERENCES employee(id),
+  employee_hobby_id integer REFERENCES employee_hobby(id)
+
+);
+
 INSERT INTO employee_department VALUES 
      (1, 'Accounting and Finance', 'Financial record keeping of transactions involving monetary inflows or outflows'),
      (2, 'Marketing', 'Involves researching what customers want and analysing how the organisation can satisfy these wants'),
@@ -29,4 +44,20 @@ INSERT INTO employee  VALUES
      (2, 'Karilin', 'Fuentes', 3),
      (3, 'Luis', 'Perez', 5),
      (4, 'Jose', 'Rivas', 2);
+
+INSERT INTO employee_hobby
+    VALUES 
+     (1, 'Movies', 'Movies'),
+     (2, 'Cycling', 'Cycling'),
+     (3, 'Sing', 'Sing');
+
+INSERT INTO employee_hobbies
+    VALUES (1, 1),
+           (1, 2),
+           (2, 3),
+           (2, 1),
+           (3, 1),
+           (3, 3),
+           (4, 1),
+           (4, 2);
 -- ...
